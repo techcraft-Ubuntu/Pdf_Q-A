@@ -9,6 +9,15 @@
 
  */
 
+
+// embedding.service.js
+
+/*
+ * Embedding converts text into a vector representation where semantically related texts can be compared using mathematical similarity.
+
+ */
+
+
  
 
 # Document QA RAG — Project Structure
