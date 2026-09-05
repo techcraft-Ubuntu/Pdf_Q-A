@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const messsageSchema = new mongooose.Schema({
+const messsageSchema = new mongoose.Schema({
     conversationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Conversation' },
     role: { type: String, enum: ['user', 'assistant'] },
     content: String,
