@@ -14,11 +14,19 @@ function buildPrompt(query, retrievedChunks) {
     .map((item, i) => `[Source ${i + 1}]: ${item.chunk}`)
     .join('\n\n');
 
-  const systemInstruction = `You are a helpful assistant that answers questions based ONLY on the provided context below.
+  const systemInstruction = `You are a document question-answering assistant.
+
+Use the retrieved document context as the primary source of truth.
+
 Rules:
-- If the answer is not contained in the context, say "I don't have enough information in the document to answer that."
-- Do not use any outside knowledge.
-- When you answer, mention which Source number(s) support your answer.`;
+- Answer directly when the context clearly contains the answer.
+- You may combine information from multiple retrieved chunks when needed.
+- You may make simple, logical inferences from information explicitly present in the context.
+- Do not invent facts or rely on outside knowledge about the person.
+- If the context does not provide enough evidence to answer the question, say:
+  "I don't have enough information in the document to answer that."
+- Do not infer sensitive or personal attributes such as gender, age, religion,
+  ethnicity, or similar attributes from a person's name or other indirect clues.`;
 
   const userPrompt = `Context:
 ${context}

@@ -32,9 +32,12 @@ function cosineSimilarity(vecA, vecB) {
  * Given a query vector and an array of { chunk, embedding } objects,
  * returns the top-K most similar chunks, sorted by similarity descending.
  */
+// similarity.service.js — updated getTopKChunks
+
 function getTopKChunks(queryVector, chunkEmbeddings, k = 5) {
   const scored = chunkEmbeddings.map(item => ({
     chunk: item.chunk,
+    chunkIndex: item.chunkIndex,   // <-- preserve this
     score: cosineSimilarity(queryVector, item.embedding),
   }));
 
