@@ -30,7 +30,25 @@ export default function UploadBox({ onUploadSuccess }) {
         className="group flex min-h-72 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border border-[#2A2E37] bg-[#171A21] px-6 py-12 text-center shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4A574]/50 hover:bg-[#1A1D24]"
       >
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#D4A574]/30 bg-[#D4A574]/10 transition-transform duration-300 group-hover:scale-105">
-          <span className="text-3xl">📄</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            className="h-7 w-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6.75 3.75h7.5L18 7.5v12.75H6.75V3.75Z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M14.25 3.75V7.5H18M9 11h6M9 14.5h4"
+            />
+          </svg>
         </div>
 
         <div className="mt-5">

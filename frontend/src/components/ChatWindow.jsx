@@ -67,11 +67,11 @@ export default function ChatWindow({ documentId }) {
         <div className="mx-auto flex max-w-3xl items-center justify-between">
           <div>
             <p className="text-sm font-medium text-[#F5F5F5]">
-              Document conversation
+              Chat with your document
             </p>
 
             <p className="mt-0.5 text-xs text-[#6B7280]">
-              Ask questions about the uploaded document
+              Ask questions and explore your PDF
             </p>
           </div>
 
@@ -92,16 +92,28 @@ export default function ChatWindow({ documentId }) {
             <div className="flex min-h-[55vh] items-center justify-center">
               <div className="max-w-md text-center">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D4A574]/25 bg-[#211D17] text-[#D4A574]">
-                  <span className="text-2xl">✦</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3.5l1.45 5.05L18.5 10l-5.05 1.45L12 16.5l-1.45-5.05L5.5 10l5.05-1.45L12 3.5Z"
+                    />
+                </svg>
                 </div>
 
                 <p className="mt-5 text-lg font-medium text-[#D1D5DB]">
-                  Ask something about the document
+                  Ask your first question
                 </p>
 
                 <p className="mt-2 text-sm leading-6 text-[#6B7280]">
-                  Your questions will be answered using information from
-                  the uploaded document.
+                  Ask anything about the uploaded PDF.
                 </p>
               </div>
             </div>
@@ -151,11 +163,11 @@ export default function ChatWindow({ documentId }) {
           />
 
           <button
-            onClick={handleSend}
-            disabled={loading || !input.trim()}
-            className="rounded-xl bg-[#D4A574] px-5 py-2.5 text-sm font-medium text-[#17120D] transition-all hover:bg-[#E0B486] disabled:cursor-not-allowed disabled:opacity-30"
-          >
-            Send
+              onClick={handleSend}
+              disabled={loading || !input.trim()}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D4A574] text-[#171A21] transition-all hover:bg-[#E0B887] disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              <span className="text-lg leading-none">↑</span>
           </button>
         </div>
       </div>

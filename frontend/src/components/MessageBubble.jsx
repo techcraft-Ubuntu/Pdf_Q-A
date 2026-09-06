@@ -18,7 +18,37 @@ export default function MessageBubble({ message }) {
               : 'border border-[#2A2E37] bg-[#171A21] text-[#D4A574]'
           }`}
         >
-          {isUser ? 'U' : '✦'}
+          {isUser ? (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                className="h-4 w-4"
+            >
+                <circle cx="12" cy="8" r="3.25" />
+                <path
+                strokeLinecap="round"
+                d="M5.5 20c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"
+                />
+            </svg>
+            ) : (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                className="h-4 w-4"
+            >
+                <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3.5l1.45 5.05L18.5 10l-5.05 1.45L12 16.5l-1.45-5.05L5.5 10l5.05-1.45L12 3.5Z"
+                />
+            </svg>
+          )}
         </div>
 
         <div

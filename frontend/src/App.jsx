@@ -26,7 +26,7 @@ export default function App() {
               </h1>
 
               <p className="text-xs text-[#9CA3AF]">
-                Ask questions about your document
+                AI-powered document assistant     
               </p>
             </div>
           </div>
