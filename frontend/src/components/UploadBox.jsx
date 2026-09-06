@@ -16,7 +16,7 @@ export default function UploadBox({ onUploadSuccess }) {
       const result = await uploadDocument(file);
       onUploadSuccess(result.documentId, file.name);
     } catch (err) {
-      setError('Upload failed. Make sure it\'s a valid PDF.');
+      setError("Upload failed. Make sure it's a valid PDF.");
       console.error(err);
     } finally {
       setUploading(false);
@@ -27,26 +27,24 @@ export default function UploadBox({ onUploadSuccess }) {
     <div className="w-full max-w-xl">
       <label
         htmlFor="pdf-upload"
-        className="group relative flex min-h-72 w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-[#0d121c] px-6 py-12 text-center shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40 hover:bg-[#101622] hover:shadow-violet-500/10"
+        className="group flex min-h-72 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border border-[#2A2E37] bg-[#171A21] px-6 py-12 text-center shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#D4A574]/50 hover:bg-[#1A1D24]"
       >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.12),transparent_55%)]" />
-
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-violet-400/20 bg-violet-500/10 shadow-lg shadow-violet-500/10 transition-transform duration-300 group-hover:scale-105">
+        <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[#D4A574]/30 bg-[#D4A574]/10 transition-transform duration-300 group-hover:scale-105">
           <span className="text-3xl">📄</span>
         </div>
 
-        <div className="relative mt-5">
-          <h2 className="text-lg font-semibold text-zinc-100">
+        <div className="mt-5">
+          <h2 className="text-lg font-semibold text-[#F5F5F5]">
             {uploading ? 'Processing document…' : 'Click to upload a PDF'}
           </h2>
 
-          <p className="mt-2 text-sm text-zinc-500">
+          <p className="mt-2 text-sm text-[#9CA3AF]">
             Select a document to start asking questions
           </p>
         </div>
 
-        <div className="relative mt-5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5">
-          <span className="text-xs text-zinc-500">
+        <div className="mt-5 rounded-full border border-[#2A2E37] bg-[#0F1115] px-3 py-1.5">
+          <span className="text-xs text-[#9CA3AF]">
             PDF files only · Up to 10MB
           </span>
         </div>
@@ -62,8 +60,8 @@ export default function UploadBox({ onUploadSuccess }) {
       </label>
 
       {uploading && (
-        <div className="mt-4 flex items-center justify-center gap-3 rounded-xl border border-violet-400/10 bg-violet-500/5 px-4 py-3 text-sm text-violet-300">
-          <span className="h-4 w-4 animate-spin rounded-full border-2 border-violet-400/30 border-t-violet-400" />
+        <div className="mt-4 flex items-center justify-center gap-3 rounded-xl border border-[#D4A574]/20 bg-[#D4A574]/5 px-4 py-3 text-sm text-[#D4A574]">
+          <span className="h-4 w-4 animate-spin rounded-full border-2 border-[#D4A574]/30 border-t-[#D4A574]" />
           Processing…
         </div>
       )}
