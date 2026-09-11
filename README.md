@@ -1,36 +1,74 @@
-# 📄 Document Q&A — RAG System
+📄 Document Q&A — RAG System
 
-A full-stack web app that lets you upload a PDF and ask questions about it in natural language. Answers are generated using a **Retrieval-Augmented Generation (RAG)** pipeline, grounding every response in the actual document content instead of the model's own memory.
+A full-stack web application that lets users upload a PDF and ask questions about its content in natural language. Answers are generated using a Retrieval-Augmented Generation (RAG) pipeline, grounding every response in the retrieved document context rather than the model's own memory.
 
-## 🚀 Key Features
+🚀 Features
+Upload and process PDF documents (text extraction via pdf-parse)
+Text chunking with overlap for better retrieval coverage
+Local embedding generation using Transformers.js (Xenova/all-MiniLM-L6-v2)
+Semantic retrieval via manually implemented cosine similarity and Top-K ranking
+Grounded answer generation using the Groq API
+Source citations showing chunk index and similarity score for each answer
+Persistent conversation and message history stored in MongoDB
+🛠️ Tech Stack
 
-- **Context-Grounded Q&A** — Interactive chat interface answering strictly from the uploaded document.
-- **Source Citations** — Every answer shows which document chunks it was generated from, with relevance scores.
-- **Anti-Hallucination** — If the answer isn't in the document, the system says so instead of guessing.
-- **High-Speed Inference** — Powered by Groq's LPU architecture for low-latency generation.
-- **Custom-Built Retrieval** — Chunking, embedding, and similarity search implemented from scratch (no LangChain shortcuts) to fully understand the retrieval mechanism.
+Backend
 
-## 🛠️ Tech Stack
+Node.js, Express.js
+MongoDB + Mongoose
+Multer (file uploads)
 
-**Backend & AI**
-- Node.js + Express — REST API
-- Transformers.js — local embedding generation
-- FAISS / manual cosine similarity — vector retrieval
-- Groq API (LLaMA) — response generation
-- MongoDB — document, chunk, and conversation storage
+AI / RAG
 
-**Frontend**
-- React + Tailwind CSS
+Transformers.js (Xenova/all-MiniLM-L6-v2 embeddings)
+Manually implemented cosine similarity + Top-K retrieval
+Groq API — OpenAI GPT-OSS 20B for response generation
 
-## ⚙️ How It Works
+Frontend
 
-1. **Upload** — User uploads a PDF.
-2. **Chunking** — Text is extracted and split into overlapping chunks.
-3. **Embedding** — Each chunk is converted into a vector using a local embedding model.
-4. **Storage** — Vectors are stored in MongoDB / FAISS for retrieval.
-5. **Query** — User's question is embedded and matched against stored vectors via cosine similarity.
-6. **Generation** — The most relevant chunks are passed to Groq's LLM to generate a grounded answer with source citations.
+React
+Tailwind CSS
+⚙️ RAG Pipeline
+text
+PDF Upload
+   ↓
+Text Extraction (pdf-parse)
+   ↓
+Chunking (with overlap)
+   ↓
+Embeddings (Transformers.js)
+   ↓
+MongoDB (chunks + embeddings)
+   ↓
+Query → Query Embedding
+   ↓
+Cosine Similarity + Top-K Retrieval
+   ↓
+Grounded Prompt Construction
+   ↓
+Groq API (GPT-OSS 20B)
+   ↓
+Answer + Source Citations
+📁 Project Structure
+text
+backend/
+  src/
+    models/        # Document, DocumentChunk, Conversation, Message
+    routes/         # upload, chat endpoints
+    controllers/     # request handlers
+    services/       # chunking, embedding, similarity, retrieval, prompt, groq
+    middleware/     # upload handling
+  server.js
 
-## 👤 Author
+frontend/
+  src/
+    api/            # API client
+    components/     # UploadBox, ChatWindow
+    App.jsx
+🎯 Goal
+
+This project was built to understand how Retrieval-Augmented Generation actually works under the hood — chunking, embedding, similarity search, and grounded prompt construction were implemented manually rather than using a framework like LangChain, in order to fully grasp each step of the retrieval pipeline before relying on abstractions.
+
+👤 Author
 
 Priyanshu Maurya
